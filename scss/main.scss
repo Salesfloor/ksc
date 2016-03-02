@@ -1,0 +1,787 @@
+// VARIABLES
+$black: #000;
+
+$white: #FFF;
+$actions-white: #FAFAFA; //rgb(250, 250, 250)
+$main-white: #F4F8FB; //rgb(244, 248, 251)
+$off-white: #E1FCDD; //rgb(255, 252, 221)
+
+$dark-blue: #0071BC; //rgb(0, 113, 188)
+$light-blue: #008DEB; //rgb(0, 141, 235)
+$list-blue: #CCE4F5; //rgb(204, 228, 245)
+$version-blue: #7DB7E0; //rgb(125, 183, 224)
+
+$online-green: #4EB626; //rgb(78, 182, 38)
+$contact-brown: #756A00; //rgb(117, 106, 0)
+$contact-yellow: #F5DD00; //rgb(245, 221, 0)
+$notification-orange: #FA4100; //rgb(250, 65, 0)
+
+$border-gray: #DFE3E6; //rgb(223, 227, 230)
+$i-gray: #8394A3; //rgb(131, 148, 163)
+$p-gray: #5A6670; //rgb(90, 102, 112)
+
+$separator: #0C619F; //rgb(12, 97, 159)
+$separator-shadow: #008DEB; //rgb(0, 141, 235)
+
+$shadow: rgba(0, 0, 0, 0.5);
+$shadow2: rgba(203, 203, 203, 0.5);
+$shadow3: rgba(0, 0, 0, 0.1);
+$shadow4: rgba(0, 0, 0, 0.8);
+$shadow5: rgba(0, 98, 163, 0.3);
+
+$opensans: "Open Sans", sans-serif;
+$semibold:  600;
+
+// CUSTOM ANIMATIONS
+@keyframes anim-menu {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes anim-panel {
+  0%   { left: -298px; }
+  100% { left: 0; }
+}
+
+// RESET
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym,  
+address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, 
+tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, 
+output, ruby, section, summary, time, mark, audio, video {  
+  margin: 0;                          
+  padding: 0; 
+  border: 0; 
+  font-size: 100%; 
+  font: inherit;
+  vertical-align: baseline; 
+}
+
+*, *:before, *:after { box-sizing: border-box; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { 
+  content: ''; 
+  content: none; 
+}
+
+table { 
+  border-collapse: collapse; 
+  border-spacing: 0; 
+}
+// END OF RESET
+
+//// START CODE FOR IPHONE 5 ////
+body { 
+  //layout
+  height: 568px;
+  width: 100%;
+
+  //typo
+  color: $white;
+  font-family: $opensans;
+  font-size: 12px;
+
+  //skin
+  background-color: $main-white;
+}
+
+
+// HEADER CODE
+.top-line { //black div on top of page
+  //layout
+  height: 22px;
+
+  //skin
+  background-color: $black;
+}
+
+
+.user { //blue div with user icon
+  //layout
+  display: flex;
+  justify-content: center;
+  height: 130px;
+
+  //skin
+  background: $dark-blue; //backup background color
+  background: linear-gradient($light-blue, $dark-blue);
+}
+
+
+.user-icon { //div that contains all icon elements
+  //layout
+  height: 112px;
+  width: 96px;
+  margin: 10px;
+}
+
+
+.user-icon-picture { //div  with user's image
+  //layout
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 96px;
+  width: 96px;
+
+  //skin
+  background-image: url("https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAU0AAAAJDcxOTNhZGJhLThhZTYtNGUwMi04Zjg0LWM0Nzg3NmQ2ODYzMA.jpg");
+  background-size: 100% 100%;
+  background-repeat: none;
+  border: 3px solid $white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px $shadow;
+}
+
+
+.user-icon-status { //div with online/offline status
+  //layout
+  position: relative;
+  top: -20px;
+  left: 7px;
+  height: 30px;
+  width: 82px;
+
+  //skin
+  background-color: $online-green;
+  border-radius: 40px;
+
+  //other
+  user-select: none;
+  p {
+    //layout
+    padding: 7px 0;
+
+    //typo
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    
+    //other
+    cursor: default;
+  }
+}
+
+
+.user-icon-light { //div with ligh color for user status
+  //layout
+  position: relative;
+  top: -120px;
+  left: 70px;
+  height: 20px;
+  width: 20px;
+
+  //skin
+  background-color: $online-green;
+  border: 2px solid $white;
+  border-radius: 40px;
+}
+
+
+
+// MIDDLE ACTIONS MENU SECTION
+.actions { //section
+  //layout
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+
+  //skin
+  background-color: $actions-white;
+  border-bottom: 1px solid $border-gray;
+  box-shadow: 0 1px 2px $shadow2;
+
+  //other
+  user-select: none;
+}
+
+
+.actions-content { //div containing the list
+  //layout
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  li {
+    //layout
+    display: inline-block;
+    width: 98px;
+    height: 32px;
+    padding: 8px 0;
+
+    //typo
+    text-transform: uppercase;
+    font-weight: $semibold;
+    text-align: center;
+    a, i {
+      //typo
+      color: $p-gray;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    a:hover {
+      //animation
+      transition: opacity 200ms ease-out;
+      opacity: 0.6;
+    }
+  }
+}
+
+
+.actions-content li:first-child { //changing the borders
+  border-right: 1px solid $border-gray;
+}
+
+.actions-content li:last-child { //changing the borders
+  border-left: 1px solid $border-gray;
+}
+
+
+// MAIN SECTION WITH DASHBOARD
+.main { //section
+  //layout
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16.5px 0;
+}
+
+
+.dashboard { //div
+  //layout
+  display: flex;
+}
+
+
+.dashboard-button { //divs that constitute a whole dashboard button
+  //layout
+  height: 130px;
+  width: 130px;
+  margin: 5px 10px;
+  padding-top: 24px;
+
+  //skin
+  background-color: $white;
+  border: 2px solid $border-gray;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px $shadow3;
+
+  //other
+  cursor: pointer;  
+}
+
+
+.dashboard-button-content { //div with text and text icon
+  i, p {
+    //layout
+    display: block;
+
+    //typo
+    text-align: center;
+
+    //other
+    user-select: none;
+  }
+
+  i {
+    //layout
+    padding-bottom: 6px;
+
+    //typo
+    color: $i-gray;
+    font-size: 40px;  
+  }
+
+  p {
+    //typo
+    color: $p-gray;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+
+.dashboard-button-notification { //div with number of notification
+  //layout
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -100px;
+  left: 90px;
+  height: 32px;
+  width: 32px;
+
+  //typo
+  font-size: 14px;
+  font-weight: $semibold;
+
+  //skin
+  background-color: $notification-orange;
+  border-radius: 50%;
+
+  //other
+  user-select: none;  
+}
+
+
+// FOOTER
+footer {
+  //layout
+  display: flex;
+  justify-content: center;
+}
+
+
+.import-contacts { //div at the bottom in footer
+  //layout
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 59px;
+  width: 300px;
+  margin: 0 10px;
+
+  //skin
+  background-color: $off-white;
+  border: 1px solid $contact-yellow;
+  border-bottom: 0px;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px $shadow;
+
+  //other
+  user-select: none;
+  cursor: pointer;
+  p {
+    //typo
+    color: $contact-brown;
+    font-size: 14px;
+    line-height: 20px;
+    &:first-child, span { font-weight: bold; }
+    span { text-decoration: underline; }
+  }
+}
+
+
+// MENU BUTTON
+.menu-button { //div containing and positioning the button
+  //layout
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 28px;
+  height: 24px;
+
+  //skin
+  border-radius: 4px;
+  
+  i {
+    //layout
+    padding: 0 2px;
+
+    //other
+    cursor: pointer;
+  }
+
+  &:hover {
+    //animation
+    transition: background-color 100ms linear;
+    background-color: $dark-blue;
+  }
+
+  &:focus {
+    //skin
+    outline: none;
+  }
+
+  &:focus + .menu { //when focus on .menu-btn go get .menu
+    //layout
+    display: block;
+
+    //animation
+    animation: anim-menu 400ms 1;
+  }
+
+  &:focus + .menu .menu-panel { //when focus on .menu-btn go get .menu .menu-panel
+    //animation
+    animation: anim-panel 400ms 1;
+  }
+}
+
+
+// MENU DIVS
+.menu { //hidden div containing whole menu
+  //layout
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 568px;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  //skin
+  background-color: $shadow4;
+
+  //other
+  user-select: none;
+}
+
+
+.menu-panel { //div with blue panel in menu
+  //layout
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 568px;
+  z-index: 101; //making sure panel is on top of menu
+
+  //skin
+  background: $dark-blue; //backup background color
+  background: linear-gradient($light-blue, $dark-blue);
+  box-shadow: 2px 0 10px $shadow5;
+}
+
+
+.menu-panel-links { //div containing all links in menu
+  //layout
+  position: absolute;
+  top: 48px;
+  left: 21px;
+  height: 464px;
+  width: 125px;
+  img { //logo
+    //layout
+    width: 121px;
+    padding-bottom: 20px;
+  }
+}
+
+
+.menu-panel-links a { //for all the links in list
+  //typo
+  font-size: 14px;
+  line-height: 48px;
+  text-decoration: none;
+  &:hover {
+    //animation
+    transition: opacity 200ms ease-out;
+    opacity: 0.4;
+  }
+}
+
+
+.menu-panel-links .list-top { //top list in menu
+  //typo
+  text-shadow: 0 1px $separator;
+  a, i {
+    //typo
+    color: $white;
+  }
+
+  i {
+    //layout
+    margin-left:5px;
+    vertical-align: middle;
+
+    //typo
+    font-size: 11px;  
+  }
+}
+
+
+.menu-panel-links .list-bottom { //bottom list in menu
+  a {
+    //typo
+    color: $list-blue;
+  }
+  li:last-child { //version li
+    //layout
+    padding-top: 14px;
+
+    //typo
+    color: $version-blue;
+    line-height: 32px;
+    
+    //other
+    cursor: default;
+  }
+}
+
+
+.list-separator { //div separating the two lists
+  //layout
+  width: 121px;
+  height: 1px;
+  margin: 16px 0;
+
+  //skin
+  background-color: $separator;
+  box-shadow: 0 1px 0 $separator-shadow;  
+}
+//// END CODE FOR IPHONE 5 ////
+
+
+// MEDIA QUERIES
+
+//// START CODE FOR IPHONE 6 ////
+@media only screen and (min-width: 375px) {
+
+  body { 
+    //layout
+    height: 667px;
+  }
+
+
+  // DIV with user status and picture
+  .user { //blue div with user icon
+    //layout
+    height: 164px;
+
+  }
+
+
+  .user-icon { //div that contains all icon elements
+    //layout
+    margin: 20px;
+  }
+
+
+  // Middle div with compose/share/contacts
+  .actions-content li {
+    padding: 8px;
+    width: 108px;
+  }
+
+
+  // MAIN SECTION WITH DASHBOARD
+  .main { //section
+    padding: 11px 0;
+  }
+
+
+  .dashboard-button { //divs that constitute a whole dashboard button
+    //layout
+    height: 150px;
+    width: 150px;
+    margin: 9px 7.5px;
+    padding-top: 32px;
+  }
+
+
+  .dashboard-button-notification { //div with number of notification
+    //layout
+    top: -100px;
+    left: 105px;
+  }
+
+
+  .import-contacts { //div at the bottom in footer
+    //layout
+    height: 79px;
+    width: 355px;
+  }
+
+
+  // MENU DIVS
+  .menu { //hidden div containing whole menu
+    //layout
+    height: 667px;
+  }
+
+
+  .menu-panel { //div with blue panel in menu
+    //layout
+    width: 187px;
+    height: 667px;
+  }
+
+
+  .menu-panel-links { //div containing all links in menu
+    //layout
+    top: 148px;
+  }
+}
+//// END CODE FOR IPHONE 6 ////
+
+//// START CODE FOR IPHONE 6 PLUS ////
+@media only screen and (min-width: 414px) {
+
+  body { 
+    //layout
+    height: 736px;
+  }
+
+
+  // MAIN SECTION WITH DASHBOARD
+  .main { //section
+    padding: 30px 0 40px 0;
+  }
+
+
+  .import-contacts { //div at the bottom in footer
+    //layout
+    height: 99px;
+    width: 394px;
+  }
+
+
+  // MENU DIVS
+  .menu { //hidden div containing whole menu
+    //layout
+    height: 736px;
+  }
+
+
+  .menu-panel { //div with blue panel in menu
+    //layout
+    width: 206px;
+    height: 736px;
+  }
+
+
+  .menu-panel-links { //div containing all links in menu
+    //layout
+    top: 219px;
+  }
+}
+//// END CODE FOR IPHONE 6 PLUS ////
+
+//// START CODE FOR TABLET 7 PORTRAIT ////
+@media only screen and (min-width: 600px) {
+
+  body { 
+    //layout
+    height: 960px;
+  }
+
+
+  // DIV with user status and picture
+  .user { //blue div with user icon
+    //layout
+    display: flex;
+    justify-content: center;
+    height: 214px;
+  }
+
+
+  .user-icon { //div that contains all icon elements
+    //layout
+    height: 137px;
+    width: 126px;
+    margin: 30px;
+  }
+
+
+  .user-icon-picture { //div  with user's image
+    //layout
+    height: 126px;
+    width: 126px;
+  }
+
+
+  .user-icon-status { //div with online/offline status
+    //layout
+    left: 22px;
+  }
+
+
+  .user-icon-light { //div with ligh color for user status
+    //layout
+    top: -145px;
+    left: 97px;
+  }
+
+  // ADD BORDER ON OTHER SIDE
+  .actions-content li:first-child { //changing the borders
+    border-left: 1px solid $border-gray;
+  }
+
+
+  .actions-content li:last-child { //changing the borders
+    border-right: 1px solid $border-gray;
+  }
+
+
+  // MAIN SECTION WITH DASHBOARD
+  .main { //section
+    //layout
+    margin-bottom: 0;
+    padding: 25.5px 0;
+  }
+
+
+  .dashboard-button { //divs that constitute a whole dashboard button
+    //layout
+    height: 236px;
+    width: 236px;
+    margin: 14.5px 12px;
+    padding-top: 54px;
+  }
+
+
+  .dashboard-button-content { //div with text and text icon
+    i {
+      //typo
+      font-size: 60px;  
+    }
+
+    p {
+      //typo
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+
+  .dashboard-button-notification { //div with number of notification
+    //layout
+    top: -164px;
+    left: 178px;
+    height: 48px;
+    width: 48px;
+
+    //typo
+    font-size: 22px;
+  }
+
+
+  .import-contacts { //div at the bottom in footer
+    //layout
+    width: 560px;
+    p {
+      //typo
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+
+  // MENU DIVS
+  .menu { //hidden div containing whole menu
+    //layout
+    height: 960px;
+  }
+
+
+  .menu-panel { //div with blue panel in menu
+    //layout
+    width: 298px;
+    height: 960px;
+  }
+
+
+  .menu-panel-links { //div containing all links in menu
+    //layout
+    top: 422px;
+    left: 40px;
+  }
+}
+//// END CODE FOR TABLET 7 PORTRAIT ////
